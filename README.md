@@ -7,3 +7,5 @@ awesome-python3-blog
 添加 model
 <h3>Day3</h3>
 添加 coroweb
+<h3>Day3</h3>
+添加 APIError
