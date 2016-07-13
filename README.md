@@ -10,4 +10,4 @@ awesome-python3-blog
 <h3>Day4</h3>
 添加 APIError
 <h3>Day5</h3>
-finish coroWeb
+finish environment setting 
