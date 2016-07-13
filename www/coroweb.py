@@ -7,7 +7,7 @@ import asyncio, os, inspect, logging, functools
 
 from urllib import parse
 from aiohttp import web
-# from apis import APIError
+from www.apis import APIError
 
 def get(path):
     '''
@@ -138,15 +138,16 @@ class RequestHandler(object):
                     return web.HTTPBadRequest('Missing argument:%s' % name)
         logging.info('call with args: %s' % str(kw))
 
-        # try:
-        r = await self._func(**kw)
-        return r
-        # except fa as e:
+        try:
+            from www.apis import APIError
+            return r
+        except APIError as e:
+            return dict(error = e.r, data = e.data, message = e.message)
 
 
 def add_static(app):
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
-    app.route.add_static('/static/', path)
+    app.router.add_static('/static/', path)
     logging.info('add static %s => %s' % ('/static/', path))
 
 
